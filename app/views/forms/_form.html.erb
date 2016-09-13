@@ -11,37 +11,61 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :server_environment %>
-    <%= f.text_field :server_environment %>
-  </div>
+  <div class="jumbotron">
+  <h1>Server Build Book</h1>
+  <h6><strong>Purpose:</strong> The Server Build Book documentation is intended to provide Operations with an accurate account of all configurations modifications to get the server to its production state including any configuration modifications made as a result of vulnerability assessments and other security hardening efforts. Related relevant information pertaining to applications and databases hosted on these environments can be found in the companion Application Build Book.</h6>
+</div>
+<h3>General Info</h3>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row" class="row-description">Server Environment</th>
+      <%#= f.select :server_environment, options_for_select(["Development", "QA", "Production"])  %>
+      <td>
+        <%= f.label(:server_environment, 'Development') %>
+        <%= f.radio_button(:server_environment, 'development') %>
+        <%= f.label(:server_environment, 'Test') %>
+        <%= f.radio_button(:server_environment, 'test') %>
+        <%= f.label(:server_environment, 'QA') %>
+        <%= f.radio_button(:server_environment, 'qa') %>
+        <%= f.label(:server_environment, 'Production') %>
+        <%= f.radio_button(:server_environment, 'production') %>
+      </td>
+    </tr>
 
-  <div class="field">
-    <%= f.label :server_location %>
-    <%= f.text_field :server_location %>
-  </div>
+    <tr>
+      <th scope="row" class="row-description">Server Location</th>
+      <td><%= f.text_field(:server_location, class: "form-control") %></td>
+    </tr>
 
-  <div class="field">
-    <%= f.label :server_purpose %>
-    <%= f.text_field :server_purpose %>
-  </div>
+  <tr>
+    <th scope="row" class="row-description">Server Purpose</th>
+    <td><%= f.text_area(:server_purpose, class: "form-control") %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :project_name %>
-    <%= f.text_field :project_name %>
-  </div>
+  <tr>
+    <th scope="row" class="row-description">Server Name</th>
+    <td><%= f.text_field(:project_name, class: "form-control") %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :server_accessibility %>
-    <%= f.text_field :server_accessibility %>
-  </div>
+  <tr>
+    <th scope="row" class="row-description">Server Accessibility</th>
+    <td>
+      <%= f.label :server_accessibility,'Internal' %>
+      <%= f.radio_button(:server_accessibility,'internal') %>
+      <%= f.label :server_accessibility,'External' %>
+      <%= f.radio_button(:server_accessibility,'External') %>
+    </td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :project_description %>
-    <%= f.text_area :project_description %>
-  </div>
+  <tr>
+    <th scope="row" class="row-description">Project Description</th>
+    <td><%= f.text_area(:project_description, class: "form-control") %></td>
+  </tr>
+ </tbody>
+</table>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit("Submit", class: "btn btn-primary") %>
   </div>
 <% end %>

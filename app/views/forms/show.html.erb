@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Server environment:</strong>
+  <%= @form.server_environment %>
+</p>
+
+<p>
+  <strong>Server location:</strong>
+  <%= @form.server_location %>
+</p>
+
+<p>
+  <strong>Server purpose:</strong>
+  <%= @form.server_purpose %>
+</p>
+
+<p>
+  <strong>Project name:</strong>
+  <%= @form.project_name %>
+</p>
+
+<p>
+  <strong>Server accessibility:</strong>
+  <%= @form.server_accessibility %>
+</p>
+
+<p>
+  <strong>Project description:</strong>
+  <%= @form.project_description %>
+</p>
+
+<%= link_to 'Edit', edit_form_path(@form) %> |
+<%= link_to 'Back', forms_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server_environment: MyString
+  server_location: MyString
+  server_purpose: MyString
+  project_name: MyString
+  server_accessibility: MyString
+  project_description: MyText
+
+two:
+  server_environment: MyString
+  server_location: MyString
+  server_purpose: MyString
+  project_name: MyString
+  server_accessibility: MyString
+  project_description: MyText

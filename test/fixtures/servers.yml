@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host_name: MyString
+  ip_address: MyString
+  operating_system: MyString
+  cpu_cores: 1
+  memory: 1
+  disk_space: 1
+  form: one
+
+two:
+  host_name: MyString
+  ip_address: MyString
+  operating_system: MyString
+  cpu_cores: 1
+  memory: 1
+  disk_space: 1
+  form: two

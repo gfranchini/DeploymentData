@@ -11,42 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :host_name %>
-    <%= f.text_field :host_name %>
-  </div>
+  <div class="jumbotron">
+   <h1>Important Notes For Completing This Form</h1>
+   <p>Each section of the Server Build Book must be completed in full.  If a particular section is not applicable to this project, then you must write <i>Not Applicable</i> and provide a reason.</p>
+   <p><strong>Important Note:</strong> No sections are to be ignored from this form</p>
+   <p>Text contained within << >> provides information on how to complete or more detailed description of what needs to be captured in that section and can be deleted once the section has been completed.</p>
+ </div>
 
-  <div class="field">
-    <%= f.label :ip_address %>
-    <%= f.text_field :ip_address %>
-  </div>
+<h3>Server Specifications</h3>
+<table class="table table-bordered">
+  <tr>
+    <th class="row-description">Host Name</th>
+    <th class="row-description">IP Address</th>
+    <th class="row-description">Operating System</th>
+    <th class="row-description">CPU Cores</th>
+    <th class="row-description">Memory(GB)</th>
+    <th class="row-description">Disk Space(GB)</th>
+  </tr>
+  <td><%= f.text_field :host_name, class: "form-control" %></td>
+  <td><%= f.text_field :ip_address, class: "form-control" %></td>
+  <td><%= f.text_field :operating_system, class: "form-control" %></div>
+  <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
+  <td><%= f.number_field :memory, class: "form-control" %></td>
+  <td><%= f.number_field :disk_space, class: "form-control" %></td>
+  <td><%= f.hidden_field(:form_id, value: Form.form_counter) %></td>
+  <!-- <td><%#= f.hidden_field(:form_id, value: form_counter) %></td> -->
+</table>
 
-  <div class="field">
-    <%= f.label :operating_system %>
-    <%= f.text_field :operating_system %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cpu_cores %>
-    <%= f.number_field :cpu_cores %>
-  </div>
-
-  <div class="field">
-    <%= f.label :memory %>
-    <%= f.number_field :memory %>
-  </div>
-
-  <div class="field">
-    <%= f.label :disk_space %>
-    <%= f.number_field :disk_space %>
-  </div>
-
-  <div class="field">
-    <%= f.label :form_id %>
-    <%= f.text_field :form_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit("Add More Servers", class: "btn btn-primary") %>
   </div>
 <% end %>

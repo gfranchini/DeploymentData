@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @architecture.description %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @architecture.form_id %>
+</p>
+
+<p>
+<%= image_tag @architecture.diagram.url %>
+</p>
+
+<%= link_to 'Edit', edit_architecture_path(@architecture) %> |
+<%= link_to 'Back', architectures_path %>

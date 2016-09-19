@@ -6,6 +6,7 @@ class Form < ApplicationRecord
   validates :project_name, presence: true
 
   has_many :servers
+  has_many :architectures
 
 
   def self.form_counter

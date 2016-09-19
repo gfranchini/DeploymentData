@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909215423) do
+ActiveRecord::Schema.define(version: 20160919020221) do
+
+  create_table "architectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "diagram_file_name"
+    t.string   "diagram_content_type"
+    t.integer  "diagram_file_size"
+    t.datetime "diagram_updated_at"
+    t.text     "description",          limit: 65535
+    t.index ["form_id"], name: "index_architectures_on_form_id", using: :btree
+  end
 
   create_table "forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "server_environment"
@@ -36,5 +48,6 @@ ActiveRecord::Schema.define(version: 20160909215423) do
     t.index ["form_id"], name: "index_servers_on_form_id", using: :btree
   end
 
+  add_foreign_key "architectures", "forms"
   add_foreign_key "servers", "forms"
 end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Architectures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Text</th>
+      <th>Form</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @architectures.each do |architecture| %>
+      <tr>
+        <td><%= architecture.description %></td>
+        <td><%= architecture.text %></td>
+        <td><%= architecture.form %></td>
+        <td><%= link_to 'Show', architecture %></td>
+        <td><%= link_to 'Edit', edit_architecture_path(architecture) %></td>
+        <td><%= link_to 'Destroy', architecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Architecture', new_architecture_path %>

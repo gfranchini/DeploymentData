@@ -25,10 +25,11 @@ class ArchitecturesController < ApplicationController
   # POST /architectures.json
   def create
     @architecture = Architecture.new(architecture_params)
+    @last = Architecture.last
 
     respond_to do |format|
       if @architecture.save
-        format.html { redirect_to @architecture, notice: 'Architecture was successfully created.' }
+        format.html { redirect_to @last, notice: 'Architecture was successfully created.' }
         format.json { render :show, status: :created, location: @architecture }
       else
         format.html { render :new }

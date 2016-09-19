@@ -35,10 +35,13 @@
   <td><%= f.number_field :memory, class: "form-control" %></td>
   <td><%= f.number_field :disk_space, class: "form-control" %></td>
   <td><%= f.hidden_field(:form_id, value: Form.form_counter) %></td>
-
 </table>
 
-  <div>
-    <%= f.submit("Add More Servers", class: "btn btn-primary") %>
+  <div id="new-button">
+    <%= f.submit("Add More Servers", class: "btn btn-success") %>
+  </div>
+
+  <div id="next-button">
+    <%= link_to('Next', new_architecture_path, class: "btn btn-primary") %>
   </div>
 <% end %>

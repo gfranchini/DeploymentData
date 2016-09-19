@@ -1,5 +1,5 @@
 class Server < ApplicationRecord
-  belongs_to :forms, required: false
+  belongs_to :form, required: false
 
   def self.form_counter
     @form_id = Form.last.id

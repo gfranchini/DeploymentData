@@ -1,0 +1,34 @@
+<%= form_for(load_balancer) do |f| %>
+  <% if load_balancer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(load_balancer.errors.count, "error") %> prohibited this load_balancer from being saved:</h2>
+
+      <ul>
+      <% load_balancer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-bordered">
+    <tr>
+      <th class="row-description">Type</th>
+      <th class="row-description">Virtual IP</th>
+      <th class="row-description">Points To:</th>
+      <th class="row-description">Ports</th>
+      <th class="row-description">SSL Location</th>
+    </tr>
+      <td><%= f.text_field :type %></td>
+      <td><%= f.text_field :ip_address %></td>
+      <td><%= f.text_field :points_to %></td>
+      <td><%= f.text_field :ports %></td>
+      <td><%= f.text_field :ssl_location %></td>
+      <% f.hidden_field(:form_id, value: Form.form_counter) %>
+
+    </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

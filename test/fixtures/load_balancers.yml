@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  ip_address: MyString
+  type: 
+  points_to: MyString
+  ports: MyString
+  ssl_location: MyString
+
+two:
+  type: 
+  ip_address: MyString
+  type: 
+  points_to: MyString
+  ports: MyString
+  ssl_location: MyString

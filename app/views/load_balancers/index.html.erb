@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Load Balancers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Ip address</th>
+      <th>Type</th>
+      <th>Points to</th>
+      <th>Ports</th>
+      <th>Ssl location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @load_balancers.each do |load_balancer| %>
+      <tr>
+        <td><%= load_balancer.type %></td>
+        <td><%= load_balancer.ip_address %></td>
+        <td><%= load_balancer.type %></td>
+        <td><%= load_balancer.points_to %></td>
+        <td><%= load_balancer.ports %></td>
+        <td><%= load_balancer.ssl_location %></td>
+        <td><%= link_to 'Show', load_balancer %></td>
+        <td><%= link_to 'Edit', edit_load_balancer_path(load_balancer) %></td>
+        <td><%= link_to 'Destroy', load_balancer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load Balancer', new_load_balancer_path %>

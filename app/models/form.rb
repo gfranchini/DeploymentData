@@ -7,6 +7,7 @@ class Form < ApplicationRecord
 
   has_many :servers
   has_many :architectures
+  has_many :load_balancers
 
 
   def self.form_counter

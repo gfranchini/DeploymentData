@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :load_balancers
   resources :architectures
   resources :servers
   resources :forms

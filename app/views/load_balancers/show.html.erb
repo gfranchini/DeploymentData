@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @load_balancer.type %>
+</p>
+
+<p>
+  <strong>Ip address:</strong>
+  <%= @load_balancer.ip_address %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @load_balancer.type %>
+</p>
+
+<p>
+  <strong>Points to:</strong>
+  <%= @load_balancer.points_to %>
+</p>
+
+<p>
+  <strong>Ports:</strong>
+  <%= @load_balancer.ports %>
+</p>
+
+<p>
+  <strong>Ssl location:</strong>
+  <%= @load_balancer.ssl_location %>
+</p>
+
+<%= link_to 'Edit', edit_load_balancer_path(@load_balancer) %> |
+<%= link_to 'Back', load_balancers_path %>

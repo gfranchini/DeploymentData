@@ -69,6 +69,6 @@ class LoadBalancersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def load_balancer_params
-      params.require(:load_balancer).permit(:type, :ip_address, :type, :points_to, :ports, :ssl_location)
+      params.require(:load_balancer).permit(:type, :ip_address, :type, :points_to, :ports, :ssl_location, :form_id)
     end
 end

@@ -20,6 +20,7 @@
 
 <h3>Server Specifications</h3>
 <table class="table table-bordered">
+
   <tr>
     <th class="row-description">Host Name</th>
     <th class="row-description">IP Address</th>
@@ -28,20 +29,55 @@
     <th class="row-description">Memory(GB)</th>
     <th class="row-description">Disk Space(GB)</th>
   </tr>
-  <td><%= f.text_field :host_name, class: "form-control" %></td>
-  <td><%= f.text_field :ip_address, class: "form-control" %></td>
-  <td><%= f.text_field :operating_system, class: "form-control" %></div>
-  <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
-  <td><%= f.number_field :memory, class: "form-control" %></td>
-  <td><%= f.number_field :disk_space, class: "form-control" %></td>
-  <% f.hidden_field(:form_id, value: Form.form_counter) %>
+
+
+<% if Form.last.servers.count == 0 %>
+  <%= p "There are no configured servers. Add some." %>
+    <td><%= f.text_field :host_name, class: "form-control" %></td>
+    <td><%= f.text_field :ip_address, class: "form-control" %></td>
+    <td><%= f.select :operating_system, options_for_select(["Ubuntu", "CentOS"]) %></div>
+    <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
+    <td><%= f.number_field :memory, class: "form-control" %></td>
+    <td><%= f.number_field :disk_space, class: "form-control" %></td>
+  <%= f.hidden_field(:form_id, value: Form.form_counter) %>
+
+<% else %>
+
+  <% Form.last.servers.each do |server| %>
+    <tr>
+      <td><%= server.host_name %></td>
+      <td><%= server.ip_address %></td>
+      <td><%= server.operating_system %></td>
+      <td><%= server.cpu_cores %></td>
+      <td><%= server.memory %></td>
+      <td><%= server.disk_space %></td>
+      <!-- <td><%#= link_to 'Show', server %></td>
+      <td><%#= link_to 'Edit', edit_server_path(server) %></td>
+      <td><%#= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr> -->
+  <% end %>
+
+  <tr>
+    <td><%= f.text_field :host_name, class: "form-control" %></td>
+    <td><%= f.text_field :ip_address, class: "form-control" %></td>
+    <td><%= f.select :operating_system, options_for_select(["Ubuntu", "CentOS"]) %></div>
+    <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
+    <td><%= f.number_field :memory, class: "form-control" %></td>
+    <td><%= f.number_field :disk_space, class: "form-control" %></td>
+    <%= f.hidden_field(:form_id, value: Form.form_counter) %>
+  </tr>
+
+<% end %>
+
+
+
 </table>
 
-  <div id="new-button">
-    <%= f.submit("Add More Servers", class: "btn btn-success") %>
+  <div>
+    <%= f.submit("Add Server", class: "btn btn-success") %>
   </div>
 
-  <div id="next-button">
+  <div>
     <%= link_to('Next', new_architecture_path, class: "btn btn-primary") %>
   </div>
 <% end %>

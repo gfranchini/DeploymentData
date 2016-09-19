@@ -19,7 +19,9 @@
       <th class="row-description">Ports</th>
       <th class="row-description">SSL Location</th>
     </tr>
-      <td><%= f.text_field :type %></td>
+      <!-- <td><%#= f.select :type, ['Zen', 'Kemp', 'HA Proxy'], class: "dropdown-menu"%></td> -->
+      <td><%= f.select :type, options_for_select(['Zen', 'Kemp', 'HA Proxy'])%></td>
+
       <td><%= f.text_field :ip_address %></td>
       <td><%= f.text_field :points_to %></td>
       <td><%= f.text_field :ports %></td>

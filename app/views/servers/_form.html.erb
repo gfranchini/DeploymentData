@@ -19,6 +19,8 @@
  </div>
 
 <h3>Server Specifications</h3>
+<p id="notice"><%= notice %></p>
+
 <table class="table table-bordered">
 
   <tr>
@@ -32,7 +34,7 @@
 
 
 <% if Form.last.servers.count == 0 %>
-  <%= p "There are no configured servers. Add some." %>
+  <%= "There are no configured servers. Add some." %>
     <td><%= f.text_field :host_name, class: "form-control" %></td>
     <td><%= f.text_field :ip_address, class: "form-control" %></td>
     <td><%= f.select :operating_system, options_for_select(["Ubuntu", "CentOS"]) %></div>
@@ -40,9 +42,7 @@
     <td><%= f.number_field :memory, class: "form-control" %></td>
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
   <%= f.hidden_field(:form_id, value: Form.form_counter) %>
-
 <% else %>
-
   <% Form.last.servers.each do |server| %>
     <tr>
       <td><%= server.host_name %></td>
@@ -51,12 +51,9 @@
       <td><%= server.cpu_cores %></td>
       <td><%= server.memory %></td>
       <td><%= server.disk_space %></td>
-      <!-- <td><%#= link_to 'Show', server %></td>
-      <td><%#= link_to 'Edit', edit_server_path(server) %></td>
-      <td><%#= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr> -->
+      <td><%= link_to 'Remove', server, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+    </tr>
   <% end %>
-
   <tr>
     <td><%= f.text_field :host_name, class: "form-control" %></td>
     <td><%= f.text_field :ip_address, class: "form-control" %></td>
@@ -64,13 +61,9 @@
     <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
     <td><%= f.number_field :memory, class: "form-control" %></td>
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
-    <%= f.hidden_field(:form_id, value: Form.form_counter) %>
+        <%= f.hidden_field(:form_id, value: Form.form_counter) %>
   </tr>
-
 <% end %>
-
-
-
 </table>
 
   <div>

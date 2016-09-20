@@ -1,18 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<center><strong>Architecture Image</strong></center>
+<div class="img-fluid img-rounded m-x-auto d-block">
+  <%= image_tag(@architecture.diagram.url, class: "img-fluid img-rounded m-x-auto d-block", style: "margin-bottom: 1.5em") %>
+</div>
+
+<div class= "col-xs-12 col-md-12">
   <strong>Description:</strong>
   <%= @architecture.description %>
-</p>
+</div>
 
-<p>
-  <strong>Form:</strong>
-  <%= @architecture.form_id %>
-</p>
 
-<p>
-<%= image_tag @architecture.diagram.url %>
-</p>
+<!-- <%#= link_to 'Edit', edit_architecture_path(@architecture) %> |
+<%#= link_to 'Back', architectures_path %> -->
 
-<%= link_to 'Edit', edit_architecture_path(@architecture) %> |
-<%= link_to 'Back', architectures_path %>
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to('Go Back', new_architecture_path, class: "btn btn-primary") %>
+  <%= link_to('Next', new_architecture_path, class: "btn btn-primary pull-right") %>
+</div>

@@ -2,4 +2,7 @@
 
 <%= render 'form', architecture: @architecture %>
 
-<%= link_to 'Back', architectures_path %>
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to('Go Back', new_server_path, class: "btn btn-primary") %>
+  <%= link_to('Next', new_architecture_path, class: "btn btn-primary pull-right", data: { confirm: 'Are you sure you uploaded your image?' }) %>
+</div>

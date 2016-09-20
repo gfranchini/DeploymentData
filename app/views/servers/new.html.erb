@@ -1,3 +1,6 @@
 <%= render 'form', server: @server %>
 
-<%= link_to 'Back', servers_path %>
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to 'Go Back', servers_path, class: "btn btn-primary" %>
+  <%= link_to('Next', new_architecture_path, class: "btn btn-primary pull-right") %>
+</div>

@@ -62,10 +62,10 @@ class ServersController < ApplicationController
     @server.destroy
     respond_to do |format|
       if current_page = new_server_path
-        format.html { redirect_to new_server_path, notice: 'Server was successfully destroyed.' }
+        format.html { redirect_to new_server_path, notice: 'Server was successfully removed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to servers_url, notice: 'Server was successfully destroyed.' }
+        format.html { redirect_to servers_url, notice: 'Server was successfully removed.' }
         format.json { head :no_content }
       end
     end

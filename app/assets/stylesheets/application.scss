@@ -6,10 +6,27 @@
   background-color: #ECEEEF;
 }
 
-#new-button {
-  float: left;
+// #new-button {
+//   float: left;
+// }
+//
+// #next-button {
+//   float: right;
+// }
+.pull-right {
+    float: right !important; // Use of important emulates bootstrap
 }
 
-#next-button {
-  float: right;
+.pull-left {
+    float: left !important; // Use of important emulates bootstrap
+}
+
+.add-server-button {
+  margin-top: -1em;
+}
+
+
+.nav-buttons {
+  margin-top: 2em;
+  margin-bottom: 1em;
 }

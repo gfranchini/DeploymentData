@@ -7,7 +7,7 @@ class Form < ApplicationRecord
 
   belongs_to :user, required: false
   has_many :servers
-  has_one :architectures
+  has_one :architecture
   has_many :load_balancers
   has_one :firewall
 

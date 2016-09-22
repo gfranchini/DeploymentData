@@ -25,4 +25,14 @@
   <div class="add-server-button">
     <%= f.submit("Upload Architecture", class: "btn btn-success pull-left") %>
   </div>
+
+  <div>
+    <% if Form.last.architecture == nil %>
+      <div class="col-md-12"><center>Upload your architecture diagram. Image format only!</center></div>
+    <% else %>
+      <div class="img-fluid img-rounded m-x-auto d-block">
+        <%= image_tag(Form.last.architecture.diagram.url, class: "img-fluid img-rounded m-x-auto d-block", style: "margin: 5em; 0; 1.5em; 0;") %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

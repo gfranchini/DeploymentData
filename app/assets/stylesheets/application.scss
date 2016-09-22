@@ -23,3 +23,12 @@
   margin-top: 2em;
   margin-bottom: 1em;
 }
+//
+// #firewall_description.placeholder {
+//   color: black !important;
+// }
+
+.form-control::-webkit-input-placeholder { color: black; }
+.form-control:-moz-placeholder { color: black; }
+.form-control::-moz-placeholder { color: black; }
+.form-control:-ms-input-placeholder { color: black; }

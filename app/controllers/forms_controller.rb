@@ -29,7 +29,7 @@ class FormsController < ApplicationController
     respond_to do |format|
       if @form.save
         format.html { redirect_to(new_server_path, notice: 'Form was successfully created.') }
-        # format.json { render :show, status: :created, location: @form }
+        format.json { render :show, status: :created, location: @form }
       else
         format.html { render :new }
         format.json { render json: @form.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class FormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def form_params
-      params.require(:form).permit(:server_environment, :server_location, :server_purpose, :project_name, :server_accessibility, :project_description)
+      params.require(:form).permit(:server_environment, :server_location, :server_purpose, :application_name, :server_accessibility, :project_description)
     end
 end

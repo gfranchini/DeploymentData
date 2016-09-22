@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922143922) do
+ActiveRecord::Schema.define(version: 20160922153149) do
 
   create_table "architectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "form_id"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20160922143922) do
     t.datetime "diagram_updated_at"
     t.text     "description",          limit: 65535
     t.index ["form_id"], name: "index_architectures_on_form_id", using: :btree
+  end
+
+  create_table "firewalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "details",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

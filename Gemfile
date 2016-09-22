@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem "paperclip", "~> 5.0.0"
+gem 'devise', '4.2.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

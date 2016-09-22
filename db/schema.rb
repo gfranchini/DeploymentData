@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920052354) do
+ActiveRecord::Schema.define(version: 20160922052837) do
 
   create_table "architectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "form_id"
@@ -24,19 +24,11 @@ ActiveRecord::Schema.define(version: 20160920052354) do
     t.index ["form_id"], name: "index_architectures_on_form_id", using: :btree
   end
 
-  create_table "firewalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "description", limit: 65535
-    t.integer  "form_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["form_id"], name: "index_firewalls_on_form_id", using: :btree
-  end
-
   create_table "forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "server_environment"
     t.string   "server_location"
     t.string   "server_purpose"
-    t.string   "application_name"
+    t.string   "project_name"
     t.string   "server_accessibility"
     t.text     "project_description",  limit: 65535
     t.datetime "created_at",                         null: false
@@ -68,8 +60,24 @@ ActiveRecord::Schema.define(version: 20160920052354) do
     t.index ["form_id"], name: "index_servers_on_form_id", using: :btree
   end
 
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
   add_foreign_key "architectures", "forms"
-  add_foreign_key "firewalls", "forms"
   add_foreign_key "load_balancers", "forms"
   add_foreign_key "servers", "forms"
 end

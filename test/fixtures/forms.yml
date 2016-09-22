@@ -4,7 +4,7 @@ one:
   server_environment: MyString
   server_location: MyString
   server_purpose: MyString
-  project_name: MyString
+  application_name: MyString
   server_accessibility: MyString
   project_description: MyText
 
@@ -12,6 +12,6 @@ two:
   server_environment: MyString
   server_location: MyString
   server_purpose: MyString
-  project_name: MyString
+  application_name: MyString
   server_accessibility: MyString
   project_description: MyText

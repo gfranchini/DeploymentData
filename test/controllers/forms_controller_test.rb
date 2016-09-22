@@ -17,7 +17,7 @@ class FormsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create form" do
     assert_difference('Form.count') do
-      post forms_url, params: { form: { project_description: @form.project_description, project_name: @form.project_name, server_accessibility: @form.server_accessibility, server_environment: @form.server_environment, server_location: @form.server_location, server_purpose: @form.server_purpose } }
+      post forms_url, params: { form: { project_description: @form.project_description, application_name: @form.application_name, server_accessibility: @form.server_accessibility, server_environment: @form.server_environment, server_location: @form.server_location, server_purpose: @form.server_purpose } }
     end
 
     assert_redirected_to form_url(Form.last)
@@ -34,7 +34,7 @@ class FormsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update form" do
-    patch form_url(@form), params: { form: { project_description: @form.project_description, project_name: @form.project_name, server_accessibility: @form.server_accessibility, server_environment: @form.server_environment, server_location: @form.server_location, server_purpose: @form.server_purpose } }
+    patch form_url(@form), params: { form: { project_description: @form.project_description, application_name: @form.application_name, server_accessibility: @form.server_accessibility, server_environment: @form.server_environment, server_location: @form.server_location, server_purpose: @form.server_purpose } }
     assert_redirected_to form_url(@form)
   end
 

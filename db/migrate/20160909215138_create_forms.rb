@@ -4,7 +4,7 @@ class CreateForms < ActiveRecord::Migration[5.0]
       t.string :server_environment
       t.string :server_location
       t.string :server_purpose
-      t.string :project_name
+      t.string :application_name
       t.string :server_accessibility
       t.text :project_description
 

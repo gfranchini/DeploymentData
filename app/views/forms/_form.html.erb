@@ -45,7 +45,7 @@
 
   <tr>
     <th scope="row" class="row-description">Application Name </th>
-    <td><%= f.text_field(:project_name, class: "form-control") %></td>
+    <td><%= f.text_field(:application_name, class: "form-control") %></td>
   </tr>
 
   <tr>
@@ -59,11 +59,11 @@
       <%= f.radio_button(:server_accessibility,'both') %>
     </td>
   </tr>
-
   <tr>
-    <th scope="row" class="row-description">Project Description</th>
-    <td><%= f.text_area(:project_description, class: "form-control") %></td>
+    <th scope="row" class="row-description">Application Description</th>
+    <td><%= f.text_area(:application_description, class: "form-control") %></td>
   </tr>
+  <%= f.hidden_field(:user_id, value: current_user.id) %>
  </tbody>
 </table>
 

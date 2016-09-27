@@ -37,6 +37,22 @@ class FirewallsController < ApplicationController
     end
   end
 
+  # POST /firewalls
+  # POST /firewalls.json
+  def firewall_create
+    @firewall = Firewall.new(firewall_params)
+
+    respond_to do |format|
+      if @firewall.save
+        format.html { redirect_to new_firewall_path, notice: 'Firewall was successfully created.' }
+        format.json { render :show, status: :created, location: @firewall }
+      else
+        format.html { render :new }
+        format.json { render json: @firewall.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /firewalls/1
   # PATCH/PUT /firewalls/1.json
   def update
@@ -69,6 +85,6 @@ class FirewallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def firewall_params
-      params.require(:firewall).permit(:details)
+      params.require(:firewall).permit(:details, :form_id)
     end
 end

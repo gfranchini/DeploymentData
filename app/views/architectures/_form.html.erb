@@ -22,16 +22,22 @@
     <%= f.hidden_field(:form_id, value: Form.last.id) %>
 </table>
 
-  <div class="add-server-button">
-    <%= f.submit("Upload Architecture", class: "btn btn-success pull-left") %>
-  </div>
+  <% if Architecture.arch_count == 0 %>
+    <div class="add-server-button">
+      <%= f.submit("Upload Architecture", class: "btn btn-success pull-left") %>
+    </div>
+  <% else %>
+    <div class="add-server-button">
+      <%= f.submit("Re-upload Architecture", class: "btn btn-success pull-left") %>
+    </div>
+  <% end %>
 
   <div>
-    <% if Form.last.architecture == nil %>
+    <% if Architecture.arch_count == 0 %>
       <div class="col-md-12"><center>Upload your architecture diagram. Image format only!</center></div>
     <% else %>
       <div class="img-fluid img-rounded m-x-auto d-block">
-        <%= image_tag(Form.last.architecture.diagram.url, class: "img-fluid img-rounded m-x-auto d-block", style: "margin: 5em; 0; 1.5em; 0;") %>
+        <%= image_tag(Architecture.last_arch_image, class: "img-fluid img-rounded m-x-auto d-block", style: "margin: 5em; 0; 1.5em; 0;") %>
       </div>
     <% end %>
   </div>

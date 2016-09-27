@@ -1,0 +1,42 @@
+<%= form_for(deployment) do |f| %>
+  <% if deployment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
+
+      <ul>
+      <% deployment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :repo_url %>
+    <%= f.text_field :repo_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :app_stack %>
+    <%= f.text_field :app_stack %>
+  </div>
+
+  <div class="field">
+    <%= f.label :additional_software %>
+    <%= f.text_field :additional_software %>
+  </div>
+
+  <div class="field">
+    <%= f.label :installation %>
+    <%= f.text_area :installation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :form_id %>
+    <%= f.text_field :form_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

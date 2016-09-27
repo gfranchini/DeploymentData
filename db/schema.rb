@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922153149) do
+ActiveRecord::Schema.define(version: 20160926045648) do
 
   create_table "architectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "form_id"
@@ -24,10 +24,30 @@ ActiveRecord::Schema.define(version: 20160922153149) do
     t.index ["form_id"], name: "index_architectures_on_form_id", using: :btree
   end
 
+  create_table "certificates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "description"
+    t.string   "expiration"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "deployments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "repo_url"
+    t.string   "app_stack"
+    t.string   "additional_software"
+    t.text     "installation",        limit: 65535
+    t.integer  "form_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["form_id"], name: "index_deployments_on_form_id", using: :btree
+  end
+
   create_table "firewalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "details",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "form_id"
+    t.index ["form_id"], name: "index_firewalls_on_form_id", using: :btree
   end
 
   create_table "forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,6 +106,8 @@ ActiveRecord::Schema.define(version: 20160922153149) do
   end
 
   add_foreign_key "architectures", "forms"
+  add_foreign_key "deployments", "forms"
+  add_foreign_key "firewalls", "forms"
   add_foreign_key "forms", "users"
   add_foreign_key "load_balancers", "forms"
   add_foreign_key "servers", "forms"

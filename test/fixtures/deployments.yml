@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repo_url: MyString
+  app_stack: MyString
+  additional_software: MyString
+  installation: MyText
+  form: one
+
+two:
+  repo_url: MyString
+  app_stack: MyString
+  additional_software: MyString
+  installation: MyText
+  form: two

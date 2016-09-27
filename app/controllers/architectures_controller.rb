@@ -28,7 +28,7 @@ class ArchitecturesController < ApplicationController
 
     respond_to do |format|
       if @architecture.save
-        format.html { redirect_to @architecture, notice: 'Architecture was successfully uploaded.' }
+        format.html { redirect_to new_architecture_path, notice: 'Architecture was successfully uploaded.' }
         format.json { render :show, status: :created, location: @architecture }
       else
         format.html { render :new }

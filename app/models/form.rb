@@ -7,9 +7,9 @@ class Form < ApplicationRecord
 
   belongs_to :user, required: false
   has_many :servers
-  has_one :architecture
+  has_many :architectures
   has_many :load_balancers
-  has_one :firewall
+  has_many :firewall
 
 
   def self.form_counter

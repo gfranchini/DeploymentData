@@ -1,5 +1,8 @@
-<h1>New Deployment</h1>
+<h1>Application Deployment</h1>
 
 <%= render 'form', deployment: @deployment %>
 
-<%= link_to 'Back', deployments_path %>
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to('Go Back', new_firewall_path, class: "btn btn-primary") %>
+  <%= link_to('Next', new_certificate_path, class: "btn btn-primary pull-right") %>
+</div>

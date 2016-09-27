@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :certificates
-  resources :deployments
   devise_for :users
+  resources :certificates
   resources :load_balancers
   resources :architectures
   resources :servers
@@ -10,6 +9,12 @@ Rails.application.routes.draw do
   resources :firewalls do
     collection do
       post 'firewalls/' => 'firewalls#firewall_create'
+    end
+  end
+
+  resources :deployments do
+    collection do
+      post  'deployments/' => 'deployments#deployment_create'
     end
   end
 

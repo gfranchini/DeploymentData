@@ -11,19 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :details %>
-    <%= f.text_area :details, class: "form-control" %>
-    <%= f.hidden_field(:form_id, value: Form.last.id) %>
-  </div>
-
-  <div class="col-md-6">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row" class="row-description">Details</th>
+        <td><%= f.text_area :details, class: "form-control" %></td>
+            <%= f.hidden_field(:form_id, value: Form.last.id) %>
+      </tr>
+    </tbody>
+  </table>
+  <div>
     <%= f.submit("Submit", class: "btn btn-primary, btn btn-success") %>
+  </div></br>
+  <div class="col-md-12">
+    <h6>Details:</h6>
+    <%= Firewall.firewall_detail %>
   </div>
-
-  <% if Firewall.firewall_count != 0 %>
-    <div class="col-md-6">
-      <%= f.submit("Edit", class: "btn btn-primary, btn btn-success") %>
-    </div>
-  <% end %>
 <% end %>

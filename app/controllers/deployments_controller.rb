@@ -37,6 +37,20 @@ class DeploymentsController < ApplicationController
     end
   end
 
+  def deployment_create
+    @deployment = Deployment.new(deployment_params)
+
+    respond_to do |format|
+      if @deployment.save
+        format.html { redirect_to new_deployment_path, notice: 'Deployment details were successfully submited.' }
+        format.json { render :show, status: :created, location: @deployment }
+      else
+        format.html { render :new }
+        format.json { render json: @deployment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /deployments/1
   # PATCH/PUT /deployments/1.json
   def update

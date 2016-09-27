@@ -1,4 +1,4 @@
-<%= form_for(deployment) do |f| %>
+<%= form_for(deployment, {url: url_for(controller: 'deployments', action: 'deployment_create')}) do |f| %>
   <% if deployment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
@@ -10,33 +10,33 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :repo_url %>
-    <%= f.text_field :repo_url %>
-  </div>
-
-  <div class="field">
-    <%= f.label :app_stack %>
-    <%= f.text_field :app_stack %>
-  </div>
-
-  <div class="field">
-    <%= f.label :additional_software %>
-    <%= f.text_field :additional_software %>
-  </div>
-
-  <div class="field">
-    <%= f.label :installation %>
-    <%= f.text_area :installation %>
-  </div>
-
-  <div class="field">
-    <%= f.label :form_id %>
-    <%= f.text_field :form_id %>
-  </div>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row" class="row-description">GitHub Repo URL</th>
+      <td><%= f.text_field :repo_url, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row" class="row-description">Application Stack</th>
+      <td><%= f.text_field :app_stack, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row" class="row-description">Additional Software</th>
+      <td><%= f.text_field :additional_software, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th scope="row" class="row-description">Installation</th>
+      <td><%= f.text_area :installation, class: "form-control" %></td>
+    </tr>
+    <%= f.hidden_field(:form_id, value: Form.last.id) %>
+  </tbody>
+</table>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit("Submit", class: "btn btn-success") %>
+  </div>
+
+  <div>
+    <center><h2><%= notice %></h2></center>
   </div>
 <% end %>

@@ -15,6 +15,10 @@ class ServersController < ApplicationController
   # GET /servers/new
   def new
     @server = Server.new
+    @user = current_user.id
+    if current_user.id != Form.last.user_id
+      redirect_to new_server_path, notice: 'zomg.'
+    end
   end
 
   # GET /servers/1/edit

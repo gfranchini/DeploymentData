@@ -1,9 +1,9 @@
 class Form < ApplicationRecord
-  validates :server_environment, presence: true
-  validates :server_purpose, presence: true
-  validates :server_accessibility, presence: true
-  validates :application_description, presence: true
-  validates :application_name, presence: true
+   validates :server_environment, presence: true
+  # validates :server_purpose, presence: true
+  # validates :server_accessibility, presence: true
+   validates :application_description, presence: true
+   validates :application_name, presence: true
 
   belongs_to :user, required: false
   has_many :servers
@@ -16,6 +16,5 @@ class Form < ApplicationRecord
   def self.form_counter
     @form_id = Form.last.id
   end
-
 
 end

@@ -16,6 +16,7 @@ class ServersController < ApplicationController
   def new
     @server = Server.new
     @user = current_user.id
+    @form = Form.last.id
     if current_user.id != Form.last.user_id
       redirect_to new_server_path, notice: 'zomg.'
     end

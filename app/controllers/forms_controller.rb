@@ -43,7 +43,7 @@ class FormsController < ApplicationController
   def update
     respond_to do |format|
       if @form.update(form_params)
-        format.html { redirect_to @form, notice: 'Form was successfully updated.' }
+        format.html { redirect_to new_server_path, notice: 'Form was successfully updated.' }
         format.json { render :show, status: :ok, location: @form }
       else
         format.html { render :edit }

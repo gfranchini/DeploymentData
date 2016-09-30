@@ -67,7 +67,13 @@
  </tbody>
 </table>
 
-  <div>
-    <%= f.submit("Next", class: "btn btn-primary pull-right") %>
-  </div>
+  <% if current_page?(new_form_path) %>
+    <div>
+      <%= f.submit("Next", class: "btn btn-primary pull-right") %>
+    </div>
+  <% else %>
+    <div>
+      <%= f.submit("Edit", class: "btn btn-primary pull-right") %>
+    </div>
+  <% end %>
 <% end %>

@@ -9,7 +9,7 @@ class Form < ApplicationRecord
   has_many :servers
   has_many :architectures
   has_many :load_balancers
-  has_many :firewall
+  has_many :firewalls
   has_many :deployments
 
 

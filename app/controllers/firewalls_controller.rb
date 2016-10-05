@@ -15,10 +15,15 @@ class FirewallsController < ApplicationController
   # GET /firewalls/new
   def new
     @firewall = Firewall.new
+    if current_user.forms.last.firewalls.count != 0
+      @firewall_detail = current_user.forms.last.firewalls.last.details
+      @firewall_last = current_user.forms.last.firewalls.last.id
+    end
   end
 
   # GET /firewalls/1/edit
   def edit
+    @firewall_last = current_user.forms.last.firewalls.last.id
   end
 
   # POST /firewalls
@@ -28,7 +33,7 @@ class FirewallsController < ApplicationController
 
     respond_to do |format|
       if @firewall.save
-        format.html { redirect_to @firewall, notice: 'Firewall was successfully created.' }
+        format.html { redirect_to new_firewall_path, notice: 'Firewall was successfully submitted.' }
         format.json { render :show, status: :created, location: @firewall }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class FirewallsController < ApplicationController
   def update
     respond_to do |format|
       if @firewall.update(firewall_params)
-        format.html { redirect_to @firewall, notice: 'Firewall was successfully updated.' }
+        format.html { redirect_to new_firewall_path, notice: 'Firewall was successfully updated.' }
         format.json { render :show, status: :ok, location: @firewall }
       else
         format.html { render :edit }

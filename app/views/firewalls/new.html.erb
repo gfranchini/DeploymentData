@@ -1,5 +1,29 @@
-<h1>New Firewall</h1>
+<h1>Firewall Details</h1>
+<%= notice %>
+<% if current_user.forms.last.firewalls.count != 0 %>
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row" class="row-description col-md-3">Details</th>
+      <td class="col-md-9"><%= @firewall_detail%></td>
+    </tr>
+  </table>
+<% end %>
 
-<%= render 'form', firewall: @firewall %>
+<% if current_user.forms.last.firewalls.count == 0 %>
+  <%= render 'form', firewall: @firewall %>
+<% end %>
 
-<%= link_to 'Back', firewalls_path %>
+<% if current_user.forms.last.firewalls.count != 0 %>
+  <div>
+    <%= link_to('Edit', edit_firewall_path(@firewall_last), class: "btn btn-success") %>
+  </div>
+<% end %>
+
+<%#= link_to 'Back', firewalls_path %>
+
+
+
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to('Go Back', new_architecture_path, class: "btn btn-primary") %>
+  <%= link_to('Next', new_deployment_path, class: "btn btn-primary pull-right") %>
+</div>

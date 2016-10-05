@@ -2,7 +2,6 @@
   <% if firewall.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(firewall.errors.count, "error") %> prohibited this firewall from being saved:</h2>
-
       <ul>
       <% firewall.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,17 +10,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :details %>
-    <%= f.text_area :details %>
-  </div>
-
-  <div class="field">
-    <%= f.label :form_id %>
-    <%= f.text_field :form_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table class="table table-bordered">
+  <tr>
+    <th scope="row" class="row-description">Details</th>
+    <td><%= f.text_area(:details, class: "form-control") %></td>
+  </tr>
+    <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+</table>
+    <div>
+      <%= f.submit("Submit", class: "btn btn-success") %>
+    </div>
 <% end %>

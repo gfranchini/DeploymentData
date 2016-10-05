@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   has_many :forms
   has_many :architectures, through: :forms
+  has_many :firewalls, through: :forms
 
 end

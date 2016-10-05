@@ -2,5 +2,11 @@
 
 <%= render 'form', firewall: @firewall %>
 
-<%= link_to 'Show', @firewall %> |
-<%= link_to 'Back', firewalls_path %>
+<%#= link_to 'Show', @firewall %>
+<%#= link_to 'Back', firewalls_path %>
+
+
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to('Go Back', new_architecture_path, class: "btn btn-primary") %>
+  <%= link_to('Next', new_deployment_path, class: "btn btn-primary pull-right") %>
+</div>

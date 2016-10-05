@@ -17,7 +17,7 @@ class FirewallsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create firewall" do
     assert_difference('Firewall.count') do
-      post firewalls_url, params: { firewall: { details: @firewall.details } }
+      post firewalls_url, params: { firewall: { details: @firewall.details, form_id: @firewall.form_id, form_id: @firewall.form_id } }
     end
 
     assert_redirected_to firewall_url(Firewall.last)
@@ -34,7 +34,7 @@ class FirewallsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update firewall" do
-    patch firewall_url(@firewall), params: { firewall: { details: @firewall.details } }
+    patch firewall_url(@firewall), params: { firewall: { details: @firewall.details, form_id: @firewall.form_id, form_id: @firewall.form_id } }
     assert_redirected_to firewall_url(@firewall)
   end
 

@@ -5,5 +5,15 @@
   <%= @firewall.details %>
 </p>
 
+<p>
+  <strong>Form:</strong>
+  <%= @firewall.form_id %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @firewall.form %>
+</p>
+
 <%= link_to 'Edit', edit_firewall_path(@firewall) %> |
 <%= link_to 'Back', firewalls_path %>

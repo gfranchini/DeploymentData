@@ -18,7 +18,7 @@ class ServersController < ApplicationController
     @user = current_user.id
     @form = Form.last.id
     if current_user.id != Form.last.user_id
-      redirect_to new_server_path, notice: 'zomg.'
+      redirect_to new_server_path, notice: 'Something went wrong. Please contact system administrator for help.'
     end
   end
 

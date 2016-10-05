@@ -14,11 +14,17 @@ class ArchitecturesController < ApplicationController
 
   # GET /architectures/new
   def new
-    @architecture = Architecture.new
+    if Architecture.last == nil
+      @architecture = Architecture.new
+    else
+      @architecture = Architecture.new
+      @architecture_edit = current_user.architectures.last
+    end
   end
 
   # GET /architectures/1/edit
   def edit
+    @architecture_edit = Architecture.last.id
   end
 
   # POST /architectures

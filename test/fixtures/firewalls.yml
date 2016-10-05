@@ -2,6 +2,10 @@
 
 one:
   details: MyText
+  form_id: 1
+  form: one
 
 two:
   details: MyText
+  form_id: 1
+  form: two

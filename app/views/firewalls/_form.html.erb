@@ -1,8 +1,8 @@
-
-<%= form_for(firewall, {url: url_for(controller: 'firewalls', action: 'firewall_create')}) do |f| %>
+<%= form_for(firewall) do |f| %>
   <% if firewall.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(firewall.errors.count, "error") %> prohibited this firewall from being saved:</h2>
+
       <ul>
       <% firewall.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,25 +10,18 @@
       </ul>
     </div>
   <% end %>
-  <table class="table table-bordered">
-    <% if Form.last.firewall.count == 0 %>
-      <tr>
-        <th scope="row" class="row-description">Details</th>
-        <td><%= f.text_area :details, class: "form-control" %></td>
-            <%= f.hidden_field(:form_id, value: Form.last.id) %>
-      </tr>
-    <% else %>
-      <tr>
-        <th scope="row" class="row-description">Details</th>
-        <td><%= Firewall.last.details %></td>
-      </tr>
-    <% end %>
-  </table>
-  <% if Form.last.firewall.count == 0 %>
-  <div>
-    <%= f.submit("Submit", class: "btn btn-primary, btn btn-success") %>
-  </div></br>
-  <% else %>
-    <%= link_to 'Edit', edit_firewall_path(firewall) %>
-  <% end %>
+
+  <div class="field">
+    <%= f.label :details %>
+    <%= f.text_area :details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :form_id %>
+    <%= f.text_field :form_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

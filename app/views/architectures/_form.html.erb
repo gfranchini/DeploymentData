@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
+
 <table class="table table-bordered">
+  <% if current_user.architectures.count == 0 %>
     <tr>
       <th scope="row" class="row-description">Description</th>
       <td><%= f.text_area(:description, class: "form-control") %></td>
@@ -20,20 +22,21 @@
       <td><%= f.file_field(:diagram, class: "btn btn-default btn-file") %></td>
     </tr>
     <%= f.hidden_field(:form_id, value: Form.last.id) %>
+  <% end %>
 </table>
 
-  <% if Architecture.arch_count == 0 %>
+  <% if current_user.architectures.count == 0 %>
     <div class="add-server-button">
       <%= f.submit("Upload Architecture", class: "btn btn-success pull-left") %>
     </div>
   <% else %>
     <div class="add-server-button">
-      <%= f.submit("Re-upload Architecture", class: "btn btn-success pull-left") %>
+      <%= link_to("Edit Architecture", edit_architecture_path(@architecture_edit), class: "btn btn-success pull-left") %>
     </div>
   <% end %>
 
   <div>
-    <% if Architecture.arch_count == 0 %>
+    <% if current_user.architectures.count == 0 %>
       <div class="col-md-12"><center>Upload your architecture diagram. Image format only!</center></div>
     <% else %>
       <div class="img-fluid img-rounded m-x-auto d-block">
@@ -41,4 +44,8 @@
       </div>
     <% end %>
   </div>
+
+    <% if current_user.architectures.last != nil %>
+      <strong>Description: </strong><%= Architecture.last.description %>
+    <% end %>
 <% end %>

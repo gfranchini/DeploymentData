@@ -42,7 +42,7 @@ class DeploymentsController < ApplicationController
 
     respond_to do |format|
       if @deployment.save
-        format.html { redirect_to new_deployment_path, notice: 'Deployment details were successfully submited.' }
+        format.html { redirect_to new_deployment_path, notice: 'Deployment details were successfully submitted.' }
         format.json { render :show, status: :created, location: @deployment }
       else
         format.html { render :new }

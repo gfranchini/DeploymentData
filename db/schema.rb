@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004221030) do
+ActiveRecord::Schema.define(version: 20161011031821) do
 
   create_table "architectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "form_id"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20161004221030) do
     t.integer  "form_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.text     "type",                limit: 65535
     t.index ["form_id"], name: "index_deployments_on_form_id", using: :btree
   end
 

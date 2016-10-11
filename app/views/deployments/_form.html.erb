@@ -1,4 +1,5 @@
-<%= form_for(deployment, {url: url_for(controller: 'deployments', action: 'deployment_create')}) do |f| %>
+<%#= form_for(deployment, {url: url_for(controller: 'deployments', action: 'deployment_create')}) do |f| %>
+<%= form_for(deployment) do |f| %>
   <% if deployment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
@@ -28,7 +29,7 @@
       <th scope="row" class="row-description">Installation</th>
       <td><%= f.text_area :installation, class: "form-control" %></td>
     </tr>
-    <%= f.hidden_field(:form_id, value: Form.last.id) %>
+    <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
   </tbody>
 </table>
 

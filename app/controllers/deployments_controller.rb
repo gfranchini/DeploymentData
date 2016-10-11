@@ -15,6 +15,8 @@ class DeploymentsController < ApplicationController
   # GET /deployments/new
   def new
     @deployment = Deployment.new
+    @deployment_data = current_user.forms.last.deployments.last
+    @deployment_last = current_user.forms.last.deployments.last.id
   end
 
   # GET /deployments/1/edit
@@ -28,21 +30,7 @@ class DeploymentsController < ApplicationController
 
     respond_to do |format|
       if @deployment.save
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
-        format.json { render :show, status: :created, location: @deployment }
-      else
-        format.html { render :new }
-        format.json { render json: @deployment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def deployment_create
-    @deployment = Deployment.new(deployment_params)
-
-    respond_to do |format|
-      if @deployment.save
-        format.html { redirect_to new_deployment_path, notice: 'Deployment details were successfully submitted.' }
+        format.html { redirect_to new_deployment_path, notice: 'Deployment was successfully created.' }
         format.json { render :show, status: :created, location: @deployment }
       else
         format.html { render :new }
@@ -56,7 +44,7 @@ class DeploymentsController < ApplicationController
   def update
     respond_to do |format|
       if @deployment.update(deployment_params)
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
+        format.html { redirect_to new_deployment_path, notice: 'Deployment was successfully updated.' }
         format.json { render :show, status: :ok, location: @deployment }
       else
         format.html { render :edit }

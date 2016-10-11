@@ -1,6 +1,38 @@
-<h1>Application Deployment</h1>
+<h1>Application Deployment Details</h1>
+<%= notice %>
+<% if current_user.forms.last.deployments.count != 0 %>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row" class="row-description">GitHub Repo URL</th>
+        <td><%= @deployment_data.repo_url %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Application Stack</th>
+        <td><%= @deployment_data.app_stack %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Additional Software</th>
+        <td><%= @deployment_data.additional_software %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Installation</th>
+        <td><%= @deployment_data.installation %></td>
+      </tr>
+    </tbody>
+  </table>
 
-<%= render 'form', deployment: @deployment %>
+<% end %>
+
+<% if current_user.forms.last.deployments.count == 0 %>
+  <%= render 'form', deployment: @deployment %>
+<% end %>
+
+<% if current_user.forms.last.deployments.count != 0 %>
+  <div>
+    <%= link_to('Edit', edit_deployment_path(@deployment_last), class: "btn btn-success") %>
+  </div>
+<% end %>
 
 <div class="col-xs-12 col-md-12 nav-buttons">
   <%= link_to('Go Back', new_firewall_path, class: "btn btn-primary") %>

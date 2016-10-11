@@ -9,7 +9,7 @@ class Architecture < ApplicationRecord
   end
 
   def self.last_arch_image
-    @image = Form.last.architectures.last.diagram.url
+      @image = Form.last.architectures.last.diagram.url
   end
 
   def self.upload_count

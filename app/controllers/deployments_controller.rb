@@ -16,7 +16,9 @@ class DeploymentsController < ApplicationController
   def new
     @deployment = Deployment.new
     @deployment_data = current_user.forms.last.deployments.last
-    @deployment_last = current_user.forms.last.deployments.last.id
+    if current_user.forms.last.deployments.last != nil
+      @deployment_last = current_user.forms.last.deployments.last.id
+    end
   end
 
   # GET /deployments/1/edit

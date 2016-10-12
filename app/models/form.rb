@@ -11,6 +11,7 @@ class Form < ApplicationRecord
   has_many :load_balancers
   has_many :firewalls
   has_many :deployments
+  has_many :certificates
 
 
   def self.form_counter

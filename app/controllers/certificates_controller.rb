@@ -15,6 +15,10 @@ class CertificatesController < ApplicationController
   # GET /certificates/new
   def new
     @certificate = Certificate.new
+    @certificate_data = current_user.forms.last.certificates.last
+    if current_user.forms.last.certificates.last != nil
+      @certificate_last = current_user.forms.last.certificates.last.id
+    end
   end
 
   # GET /certificates/1/edit
@@ -28,7 +32,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
+        format.html { redirect_to new_certificate_path, notice: 'Certificate was successfully created.' }
         format.json { render :show, status: :created, location: @certificate }
       else
         format.html { render :new }
@@ -69,6 +73,6 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:description, :expiration)
+      params.require(:certificate).permit(:description, :expiration, :form_id)
     end
 end

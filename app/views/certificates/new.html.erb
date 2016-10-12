@@ -1,8 +1,32 @@
 <h1>SSL Certificates</h1>
+<%= notice %>
+<% if current_user.forms.last.certificates.count != 0 %>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row" class="row-description">Certificate classfication, description or identification.</th>
+        <td>
+          <strong>Provide details on how the SSL Certificates are used</strong></br></br>
+          <%= @certificate_data.description %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Certificate Expiration</th>
+        <td>
+          <%= @certificate_data.expiration %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <%= render 'form', certificate: @certificate %>
+<% end %>
 
-<%= render 'form', certificate: @certificate %>
-
-<%#= link_to 'Back', certificates_path %>
+<% if current_user.forms.last.certificates.count != 0 %>
+  <div>
+    <%= link_to('Edit', edit_certificate_path(@certificate_last), class: "btn btn-success") %>
+  </div>
+<% end %>
 
 <div class="col-xs-12 col-md-12 nav-buttons">
   <%= link_to('Go Back', new_deployment_path, class: "btn btn-primary") %>

@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :architectures, through: :forms
   has_many :firewalls, through: :forms
   has_many :deployments, through: :forms
+  has_many :certificates, through: :forms
 
 end

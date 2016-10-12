@@ -24,8 +24,8 @@
         </td>
       </tr>
       <tr>
-        <th scope="row" class="row-description">Certificate expiry</th>
-        <td><%= f.text_field :expiration, class: "form-control" %></td>
+        <th scope="row" class="row-description">Certificate Expiration</th>
+        <td><%= f.date_field :expiration, class: "form-control" %></td>
       </tr>
       <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
     </tbody>

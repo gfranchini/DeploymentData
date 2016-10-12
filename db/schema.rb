@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011031821) do
+ActiveRecord::Schema.define(version: 20161012044108) do
+
+  create_table "accesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "adminid"
+    t.string   "passsword"
+    t.string   "contact"
+    t.string   "access"
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_accesses_on_form_id", using: :btree
+  end
 
   create_table "architectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "form_id"
@@ -29,6 +40,8 @@ ActiveRecord::Schema.define(version: 20161011031821) do
     t.string   "expiration"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "form_id"
+    t.index ["form_id"], name: "index_certificates_on_form_id", using: :btree
   end
 
   create_table "deployments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -105,7 +118,9 @@ ActiveRecord::Schema.define(version: 20161011031821) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "accesses", "forms"
   add_foreign_key "architectures", "forms"
+  add_foreign_key "certificates", "forms"
   add_foreign_key "deployments", "forms"
   add_foreign_key "firewalls", "forms"
   add_foreign_key "forms", "users"

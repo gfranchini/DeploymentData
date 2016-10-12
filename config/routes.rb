@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :accesses
   resources :firewalls
   devise_for :users
   resources :certificates

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Adminid:</strong>
+  <%= @access.adminid %>
+</p>
+
+<p>
+  <strong>Passsword:</strong>
+  <%= @access.passsword %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @access.contact %>
+</p>
+
+<p>
+  <strong>Access:</strong>
+  <%= @access.access %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @access.form %>
+</p>
+
+<%= link_to 'Edit', edit_access_path(@access) %> |
+<%= link_to 'Back', accesses_path %>

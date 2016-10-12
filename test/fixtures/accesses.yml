@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adminid: MyString
+  passsword: MyString
+  contact: MyString
+  access: MyString
+  form: one
+
+two:
+  adminid: MyString
+  passsword: MyString
+  contact: MyString
+  access: MyString
+  form: two

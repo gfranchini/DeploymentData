@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012044108) do
+ActiveRecord::Schema.define(version: 20161013050650) do
 
   create_table "accesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "adminid"
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 20161012044108) do
     t.index ["form_id"], name: "index_servers_on_form_id", using: :btree
   end
 
+  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "crontab"
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_tasks_on_form_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -126,4 +134,5 @@ ActiveRecord::Schema.define(version: 20161012044108) do
   add_foreign_key "forms", "users"
   add_foreign_key "load_balancers", "forms"
   add_foreign_key "servers", "forms"
+  add_foreign_key "tasks", "forms"
 end

@@ -13,39 +13,35 @@
 
 <table class="table table-bordered">
   <% if current_user.forms.last.architectures.count == 0 %>
+    Upload your architecture diagram. Image format only! (.png, .jpeg, .jpg)
     <tr>
-      <th scope="row" class="row-description">Description</th>
+      <th class="row-description">Description</th>
       <td><%= f.text_area(:description, class: "form-control") %></td>
     <tr>
     <tr>
       <th scope="row" class="row-description">Architecture File</th>
       <td><%= f.file_field(:diagram, class: "btn btn-default btn-file") %></td>
     </tr>
-    <%= f.hidden_field(:form_id, value: Form.last.id) %>
+    <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+  <% else %>
+    <tr>
+      <th class="row-description">Description</th>
+      <th><%= current_user.forms.last.architectures.last.description%></th>
+    </tr>
+    <tr>
+      <th class="row-description">Image</th>
+      <td><%= image_tag(current_user.forms.last.architectures.last.diagram.url, class: "img-fluid img-rounded m-x-auto d-block", style: "margin: 5em; 0; 1.5em; 0;") %></td>
+    </tr>
   <% end %>
 </table>
 
   <% if current_user.forms.last.architectures.count == 0 %>
     <div class="add-server-button">
-      <%= f.submit("Upload Architecture", class: "btn btn-success pull-left") %>
+      <%= f.submit("Upload Architecture", class: "btn btn-success pull-right") %>
     </div>
   <% else %>
     <div class="add-server-button">
-      <%= link_to("Edit Architecture", edit_architecture_path(@architecture_edit), class: "btn btn-success pull-left") %>
+      <%= link_to("Edit Architecture", edit_architecture_path(@architecture_edit), class: "btn btn-success pull-right") %>
     </div>
   <% end %>
-
-  <div>
-    <% if current_user.forms.last.architectures.count == 0 %>
-      <div class="col-md-12"><center>Upload your architecture diagram. Image format only!</center></div>
-    <% else %>
-      <div class="img-fluid img-rounded m-x-auto d-block">
-        <%= image_tag(current_user.forms.last.architectures.last.diagram.url, class: "img-fluid img-rounded m-x-auto d-block", style: "margin: 5em; 0; 1.5em; 0;") %>
-      </div>
-    <% end %>
-  </div>
-
-    <% if current_user.forms.last.architectures.count != 0 %>
-      <strong>Description: </strong><%= current_user.forms.last.architectures.last.description %>
-    <% end %>
 <% end %>

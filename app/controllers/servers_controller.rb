@@ -34,10 +34,10 @@ class ServersController < ApplicationController
     respond_to do |format|
       if @server.save
         if current_page = new_server_path
-          format.html { redirect_to new_server_path, notice: 'Server was successfully created.' }
+          format.html { redirect_to new_server_path, notice: 'Server was successfully added.' }
           format.json { render :show, status: :created, location: @server }
         else
-          format.html { redirect_to @server, notice: 'Server was successfully created .' }
+          format.html { redirect_to @server, notice: 'Server was successfully added .' }
           format.json { render :show, status: :created, location: @server }
         end
       else

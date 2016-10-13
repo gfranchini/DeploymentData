@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Crontab:</strong>
+  <%= @task.crontab %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @task.form %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

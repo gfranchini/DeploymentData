@@ -22,7 +22,6 @@
 <p id="notice"><%= notice %></p>
 
 <table class="table table-bordered">
-
   <tr>
     <th class="row-description">Host Name</th>
     <th class="row-description">IP Address</th>
@@ -33,14 +32,14 @@
   </tr>
 
 <% if current_user.forms.last.servers.count == 0 %>
-  <%= "There are no configured servers. Add some." %>
+    "There are no configured servers. Add some."
     <td><%= f.text_field :host_name, class: "form-control" %></td>
     <td><%= f.text_field :ip_address, class: "form-control" %></td>
     <td><%= f.select :operating_system, options_for_select(["Ubuntu", "CentOS"]) %></div>
     <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
     <td><%= f.number_field :memory, class: "form-control" %></td>
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
-        <%= f.hidden_field(:form_id, value: Form.last.id) %>
+        <%= f.hidden_field(:form_id, value: current_user.form.last.id) %>
   <% else %>
   <% current_user.forms.last.servers.each do |server| %>
     <tr>
@@ -60,13 +59,14 @@
     <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
     <td><%= f.number_field :memory, class: "form-control" %></td>
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
+    <td><%= f.submit("Add Server", class: "btn btn-success pull-right") %></td>
         <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
   </tr>
 <% end %>
 </table>
 
 <div class="add-server-button">
-  <%= f.submit("Add Server", class: "btn btn-success pull-left") %>
+  <%#= f.submit("Add Server", class: "btn btn-success pull-right") %>
 </div>
 
 <% end %>

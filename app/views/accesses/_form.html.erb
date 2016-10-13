@@ -1,3 +1,5 @@
+<strong>Administrator Account Information</strong>
+<p id="notice"><%= notice %></p>
 <%= form_for(access) do |f| %>
   <% if access.errors.any? %>
     <div id="error_explanation">
@@ -11,32 +13,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :adminid %>
-    <%= f.text_field :adminid %>
-  </div>
-
-  <div class="field">
-    <%= f.label :passsword %>
-    <%= f.text_field :passsword %>
-  </div>
-
-  <div class="field">
-    <%= f.label :contact %>
-    <%= f.text_field :contact %>
-  </div>
-
-  <div class="field">
-    <%= f.label :access %>
-    <%= f.text_field :access %>
-  </div>
-
-  <div class="field">
-    <%= f.label :form_id %>
-    <%= f.text_field :form_id %>
-  </div>
-
+<table class="table table-bordered">
+  <tr>
+    <th class="row-description">UserID</th>
+    <th class="row-description">Password</th>
+    <th class="row-description">Contact</th>
+    <th class="row-description">Access Level</th>
+  </tr>
+<% if current_user.forms.last.accesses.last == 0 %>
+  <%= "There are no users configured for the servers. Add some." %>
+  <td><%= f.text_field :adminid, class: "form-control" %></td>
+  <td><%= f.text_field :passsword, class: "form-control" %></td>
+  <td><%= f.text_field :contact, class: "form-control" %></td>
+  <td><%= f.text_field :access, class: "form-control" %></td>
+      <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+<% else %>
+<% current_user.forms.last.accesses.each do |access| %>
+  <tr>
+    <td><%= access.adminid %></td>
+    <td><%= access.passsword %></td>
+    <td><%= access.contact %></td>
+    <td><%= access.access %></td>
+    <td><%= link_to 'Remove', access, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td><%= f.text_field :adminid, class: "form-control" %></td>
+    <td><%= f.text_field :passsword, class: "form-control" %></td>
+    <td><%= f.text_field :contact, class: "form-control" %></td>
+    <td><%= f.text_field :access, class: "form-control" %></td>
+        <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+  </tr>
+  <% end %>
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit("Add Access", class: "btn btn-success pull-left") %>
   </div>
 <% end %>

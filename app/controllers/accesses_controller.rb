@@ -28,7 +28,7 @@ class AccessesController < ApplicationController
 
     respond_to do |format|
       if @access.save
-        format.html { redirect_to @access, notice: 'Access was successfully created.' }
+        format.html { redirect_to new_access_path, notice: 'Access was successfully created.' }
         format.json { render :show, status: :created, location: @access }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AccessesController < ApplicationController
   def update
     respond_to do |format|
       if @access.update(access_params)
-        format.html { redirect_to @access, notice: 'Access was successfully updated.' }
+        format.html { redirect_to new_access_path, notice: 'Access was successfully updated.' }
         format.json { render :show, status: :ok, location: @access }
       else
         format.html { render :edit }

@@ -32,7 +32,7 @@
     <th class="row-description">Disk Space(GB)</th>
   </tr>
 
-<% if Form.last.servers.count == 0 %>
+<% if current_user.forms.last.servers.count == 0 %>
   <%= "There are no configured servers. Add some." %>
     <td><%= f.text_field :host_name, class: "form-control" %></td>
     <td><%= f.text_field :ip_address, class: "form-control" %></td>
@@ -42,7 +42,7 @@
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
         <%= f.hidden_field(:form_id, value: Form.last.id) %>
   <% else %>
-  <% Form.last.servers.each do |server| %>
+  <% current_user.forms.last.servers.each do |server| %>
     <tr>
       <td><%= server.host_name %></td>
       <td><%= server.ip_address %></td>
@@ -60,7 +60,7 @@
     <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
     <td><%= f.number_field :memory, class: "form-control" %></td>
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
-        <%= f.hidden_field(:form_id, value: Form.last.id) %>
+        <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
   </tr>
 <% end %>
 </table>

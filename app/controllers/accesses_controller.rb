@@ -28,7 +28,7 @@ class AccessesController < ApplicationController
 
     respond_to do |format|
       if @access.save
-        format.html { redirect_to new_access_path, notice: 'Access was successfully created.' }
+        format.html { redirect_to new_access_path, notice: 'Access was successfully added.' }
         format.json { render :show, status: :created, location: @access }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class AccessesController < ApplicationController
   def destroy
     @access.destroy
     respond_to do |format|
-      format.html { redirect_to accesses_url, notice: 'Access was successfully destroyed.' }
+      format.html { redirect_to accesses_url, notice: 'Access was successfully removed.' }
       format.json { head :no_content }
     end
   end

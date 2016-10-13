@@ -15,7 +15,7 @@
 
 <% if current_user.forms.last.firewalls.count != 0 %>
   <div>
-    <%= link_to('Edit', edit_firewall_path(@firewall_last), class: "btn btn-success") %>
+    <%= link_to('Edit', edit_firewall_path(@firewall_last), class: "btn btn-success pull-right") %>
   </div>
 <% end %>
 

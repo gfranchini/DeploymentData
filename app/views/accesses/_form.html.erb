@@ -15,7 +15,7 @@
 
 <table class="table table-bordered">
   <tr>
-    <th class="row-description">UserID</th>
+    <th class="row-description">UserName</th>
     <th class="row-description">Password</th>
     <th class="row-description">Contact</th>
     <th class="row-description">Access Level</th>
@@ -31,7 +31,7 @@
 <% current_user.forms.last.accesses.each do |access| %>
   <tr>
     <td><%= access.adminid %></td>
-    <td><%= access.passsword %></td>
+    <td><center>***********</center><%#= access.passsword %></td>
     <td><%= access.contact %></td>
     <td><%= access.access %></td>
     <td><%= link_to 'Remove', access, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
@@ -43,10 +43,11 @@
     <td><%= f.text_field :contact, class: "form-control" %></td>
     <td><%= f.text_field :access, class: "form-control" %></td>
         <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+    <td><%= f.submit("Add Access", class: "btn btn-success pull-left") %></td>
   </tr>
   <% end %>
 </table>
   <div class="actions">
-    <%= f.submit("Add Access", class: "btn btn-success pull-left") %>
+    <%#= f.submit("Add Access", class: "btn btn-success pull-left") %>
   </div>
 <% end %>

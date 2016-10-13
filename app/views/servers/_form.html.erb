@@ -39,7 +39,8 @@
     <td><%= f.number_field :cpu_cores, class: "form-control" %></td>
     <td><%= f.number_field :memory, class: "form-control" %></td>
     <td><%= f.number_field :disk_space, class: "form-control" %></td>
-        <%= f.hidden_field(:form_id, value: current_user.form.last.id) %>
+    <td><%= f.submit("Add Server", class: "btn btn-success pull-right") %></td>
+        <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
   <% else %>
   <% current_user.forms.last.servers.each do |server| %>
     <tr>

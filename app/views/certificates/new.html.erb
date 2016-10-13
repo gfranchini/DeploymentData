@@ -24,7 +24,7 @@
 
 <% if current_user.forms.last.certificates.count != 0 %>
   <div>
-    <%= link_to('Edit', edit_certificate_path(@certificate_last), class: "btn btn-success") %>
+    <%= link_to('Edit', edit_certificate_path(@certificate_last), class: "btn btn-success pull-right") %>
   </div>
 <% end %>
 

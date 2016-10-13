@@ -30,7 +30,7 @@
 
 <% if current_user.forms.last.deployments.count != 0 %>
   <div>
-    <%= link_to('Edit', edit_deployment_path(@deployment_last), class: "btn btn-success") %>
+    <%= link_to('Edit', edit_deployment_path(@deployment_last), class: "btn btn-success pull-right") %>
   </div>
 <% end %>
 

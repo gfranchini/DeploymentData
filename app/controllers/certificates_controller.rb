@@ -32,7 +32,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to new_certificate_path, notice: 'Certificate was successfully created.' }
+        format.html { redirect_to new_certificate_path, notice: 'Certificate was successfully saved.' }
         format.json { render :show, status: :created, location: @certificate }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class CertificatesController < ApplicationController
   def update
     respond_to do |format|
       if @certificate.update(certificate_params)
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully updated.' }
+        format.html { redirect_to @certificate, notice: 'Certificate was successfully saved.' }
         format.json { render :show, status: :ok, location: @certificate }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate.destroy
     respond_to do |format|
-      format.html { redirect_to certificates_url, notice: 'Certificate was successfully destroyed.' }
+      format.html { redirect_to certificates_url, notice: 'Certificate was successfully deleted.' }
       format.json { head :no_content }
     end
   end

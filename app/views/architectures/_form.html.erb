@@ -1,3 +1,4 @@
+<%= notice %>
 <%= form_for(architecture) do |f| %>
   <% if architecture.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +14,7 @@
 
 <table class="table table-bordered">
   <% if current_user.forms.last.architectures.count == 0 %>
-    Upload your architecture diagram. Image format only! (.png, .jpeg, .jpg)
+    <strong>Upload your architecture diagram. Image format only! (.png, .jpeg, .jpg)</strong>
     <tr>
       <th class="row-description">Description</th>
       <td><%= f.text_area(:description, class: "form-control") %></td>
@@ -41,7 +42,8 @@
     </div>
   <% else %>
     <div class="add-server-button">
-      <%= link_to("Edit Architecture", edit_architecture_path(@architecture_edit), class: "btn btn-success pull-right") %>
+      <%#= link_to("Edit Architecture", edit_architecture_path(@architecture_edit), class: "btn btn-success pull-right") %>
+      <%= link_to('Delete', new_architecture_path(@architecture), method: :delete, class: "btn btn-danger pull-right", data: { confirm: 'Are you sure?' }) %></td>
     </div>
   <% end %>
 <% end %>

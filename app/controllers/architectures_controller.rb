@@ -1,5 +1,5 @@
 class ArchitecturesController < ApplicationController
-  before_action :set_architecture, only: [:show, :edit, :update, :destroy]
+  before_action :set_architecture, only: [:show, :edit, :update]
 
   # GET /architectures
   # GET /architectures.json
@@ -60,9 +60,10 @@ class ArchitecturesController < ApplicationController
   # DELETE /architectures/1
   # DELETE /architectures/1.json
   def destroy
+    @architecture = current_user.forms.last.architectures.last
     @architecture.destroy
     respond_to do |format|
-      format.html { redirect_to architectures_url, notice: 'Architecture was successfully destroyed.' }
+      format.html { redirect_to new_architecture_path, notice: 'Architecture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

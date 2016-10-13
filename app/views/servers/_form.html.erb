@@ -2,7 +2,6 @@
   <% if server.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(server.errors.count, "error") %> prohibited this server from being saved:</h2>
-
       <ul>
       <% server.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -16,7 +15,7 @@
    <p>Each section of the Server Build Book must be completed in full.  If a particular section is not applicable to this project, then you must write <i>Not Applicable</i> and provide a reason.</p>
    <p><strong>Important Note:</strong> No sections are to be ignored from this form</p>
    <p>Text contained within << >> provides information on how to complete or more detailed description of what needs to be captured in that section and can be deleted once the section has been completed.</p>
- </div>
+  </div>
 
 <h3>Server Specifications</h3>
 <p id="notice"><%= notice %></p>

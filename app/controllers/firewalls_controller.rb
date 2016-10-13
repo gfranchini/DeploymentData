@@ -1,5 +1,5 @@
 class FirewallsController < ApplicationController
-  before_action :set_firewall, only: [:show, :edit, :update, :destroy]
+  before_action :set_firewall, only: [:show, :edit, :update ]
 
   # GET /firewalls
   # GET /firewalls.json
@@ -33,7 +33,7 @@ class FirewallsController < ApplicationController
 
     respond_to do |format|
       if @firewall.save
-        format.html { redirect_to new_firewall_path, notice: 'Firewall was successfully submitted.' }
+        format.html { redirect_to new_firewall_path, notice: 'Firewall was successfully saved.' }
         format.json { render :show, status: :created, location: @firewall }
       else
         format.html { render :new }
@@ -59,9 +59,10 @@ class FirewallsController < ApplicationController
   # DELETE /firewalls/1
   # DELETE /firewalls/1.json
   def destroy
+    @firewall = current_user.forms.last.firewalls.last
     @firewall.destroy
     respond_to do |format|
-      format.html { redirect_to firewalls_url, notice: 'Firewall was successfully destroyed.' }
+      format.html { redirect_to new_firewall_path, notice: 'Firewall was successfully deleted.' }
       format.json { head :no_content }
     end
   end

@@ -11,13 +11,27 @@
   <% end %>
 
 <table class="table table-bordered">
-  <tr>
-    <th scope="row" class="row-description">Details</th>
-    <td><%= f.text_area(:details, class: "form-control") %></td>
-  </tr>
-    <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+  <% if current_user.forms.last.firewalls.count == 0 %>
+    <tr>
+      <th scope="row" class="row-description">Details</th>
+      <td><%= f.text_area(:details, class: "form-control") %></td>
+    </tr>
+      <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+    <% else %>
+    <tr>
+      <th scope="row" class="row-description">Details</th>
+      <td><%= @firewall_detail %></td>
+    </tr>
+  <% end %>
 </table>
-    <div>
+
+  <% if current_user.forms.last.firewalls.count == 0 %>
+    <div class="add-server-button">
       <%= f.submit("Submit", class: "btn btn-success pull-right") %>
     </div>
+  <% else %>
+    <div class="add-server-button">
+      <%= link_to('Delete', new_firewall_path, method: :delete, class: "btn btn-danger pull-right", data: { confirm: 'Are you sure?' }) %></td>
+    </div>
+  <% end %>
 <% end %>

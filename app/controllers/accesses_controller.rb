@@ -56,7 +56,7 @@ class AccessesController < ApplicationController
   def destroy
     @access.destroy
     respond_to do |format|
-      format.html { redirect_to accesses_url, notice: 'Access was successfully removed.' }
+      format.html { redirect_to new_access_path, notice: 'Access was successfully removed.' }
       format.json { head :no_content }
     end
   end

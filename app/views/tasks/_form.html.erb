@@ -11,17 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :crontab %>
-    <%= f.text_field :crontab %>
-  </div>
-
-  <div class="field">
-    <%= f.label :form_id %>
-    <%= f.text_field :form_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table class="table table-bordered">
+  <% if current_user.forms.last.tasks.count == 0 %>
+  There are no configured tasks.
+  <tr>
+    <th class="row-description">Crontab Entry</th>
+    <td><%= f.text_field :crontab, class: "form-control" %></td>
+    <td><%= f.submit("Add Task", class: "btn btn-success") %></td>
+        <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+  </tr>
+  <% else %>
+  <% current_user.forms.last.tasks.each do |task| %>
+    <tr>
+      <th class="row-description">Crontab Entry</th>
+      <td><%= task.crontab %></td>
+      <td><%= link_to 'Remove', task, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  <th class="row-description">Crontab Entry</th>
+  <td><%= f.text_field :crontab, class: "form-control" %></td>
+  <td><%= f.submit("Add Task", class: "btn btn-success") %></td>
+      <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+  <% end %>
+</table>
 <% end %>

@@ -11,5 +11,6 @@ class User < ApplicationRecord
   has_many :deployments, through: :forms
   has_many :certificates, through: :forms
   has_many :accesses, through: :forms
+  has_many :tasks, through: :forms
 
 end

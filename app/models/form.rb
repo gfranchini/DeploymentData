@@ -13,7 +13,7 @@ class Form < ApplicationRecord
   has_many :deployments
   has_many :certificates
   has_many :accesses
-
+  has_many :tasks
 
   def self.form_counter
     @form_id = Form.last.id

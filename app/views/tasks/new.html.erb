@@ -1,5 +1,9 @@
-<h1>New Task</h1>
-
+<h1>Scheduled Tasks</h1>
+<p id="notice"><%= notice %></p>
 <%= render 'form', task: @task %>
 
-<%= link_to 'Back', tasks_path %>
+
+<div class="col-xs-12 col-md-12 nav-buttons">
+  <%= link_to('Go Back', new_access_path, class: "btn btn-primary") %>
+  <%= link_to('Next', new_deployment_path, class: "btn btn-primary pull-right") %>
+</div>

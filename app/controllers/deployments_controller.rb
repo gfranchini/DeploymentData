@@ -23,6 +23,8 @@ class DeploymentsController < ApplicationController
 
   # GET /deployments/1/edit
   def edit
+    @deployment_data = current_user.forms.last.deployments.last
+    @deployment_last = current_user.forms.last.deployments.last.id
   end
 
   # POST /deployments

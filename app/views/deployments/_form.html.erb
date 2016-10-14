@@ -1,9 +1,9 @@
 <%#= form_for(deployment, {url: url_for(controller: 'deployments', action: 'deployment_create')}) do |f| %>
+<%= notice %>
 <%= form_for(deployment) do |f| %>
   <% if deployment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
-
       <ul>
       <% deployment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,33 +11,56 @@
       </ul>
     </div>
   <% end %>
+
 <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row" class="row-description">GitHub Repo URL</th>
-      <td><%= f.text_field :repo_url, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th scope="row" class="row-description">Application Stack</th>
-      <td><%= f.text_field :app_stack, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th scope="row" class="row-description">Additional Software</th>
-      <td><%= f.text_field :additional_software, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <th scope="row" class="row-description">Installation</th>
-      <td><%= f.text_area :installation, class: "form-control" %></td>
-    </tr>
-    <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+    <% if current_user.forms.last.deployments.count == 0 %>
+      <tr>
+        <th scope="row" class="row-description">GitHub Repo URL</th>
+        <td><%= f.text_field :repo_url, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Application Stack</th>
+        <td><%= f.text_field :app_stack, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Additional Software</th>
+        <td><%= f.text_field :additional_software, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th scope="row" class="row-description">Installation</th>
+        <td><%= f.text_area :installation, class: "form-control" %></td>
+      </tr>
+      <%= f.hidden_field(:form_id, value: current_user.forms.last.id) %>
+    <% else %>
+        <tr>
+          <th scope="row" class="row-description">GitHub Repo URL</th>
+          <td><%= @deployment_data.repo_url %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="row-description">Application Stack</th>
+          <td><%= @deployment_data.app_stack %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="row-description">Additional Software</th>
+          <td><%= @deployment_data.additional_software %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="row-description">Installation</th>
+          <td><%= @deployment_data.installation %></td>
+        </tr>
+    <% end %>
   </tbody>
 </table>
 
-  <div class="actions">
-    <%= f.submit("Submit", class: "btn btn-success pull-right") %>
-  </div>
+  <% if current_user.forms.last.deployments.count == 0 %>
+    <div class="add-server-button">
+      <%= f.submit("Submit", class: "btn btn-success pull-right") %>
+    </div>
+  <% else %>
+    <div class="add-server-button">
+      <%= link_to('Edit', edit_deployment_path(@deployment_last), class: "btn btn-success pull-right") %></td>
+    </div>
+  <% end %>
 
-  <div>
-    <center><h2><%= notice %></h2></center>
-  </div>
 <% end %>
